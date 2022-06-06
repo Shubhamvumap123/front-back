@@ -3,6 +3,11 @@ const app = require("./index")
 const connect = require("./configs/db")
 
 app.listen(5000,async()=>{
-    await connect();
-    console.log("listening to posrt 50000")
+    try {
+        await connect();
+        console.log("listening to posrt 50000");
+    } catch (error) {
+        console.log("error",error)
+    }
+    
 })
