@@ -8,13 +8,20 @@ useEffect(() =>{
     axios.get(`http://localhost:5000/fb`)
     .then(res =>{
         console.log(res)
-        setdata(res.data)
+        setdata(res.data.posts)
     })
 },[])
-console.log("lastdata");
+console.log("lastdata",data.posts);
   return (
     <div>
-<h1>Hallo</h1>
+{
+    data.map(e => <div key={e.id}>
+        <div>{e.id}</div>
+        <img src={e.image} />
+        <div>{e.brand}</div>
+        <div>{e.color}</div>
+        </div>)
+    }
     </div>
   )
 }
