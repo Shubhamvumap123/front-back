@@ -26,6 +26,7 @@ if(sort === "price_asc"){
       .exec();
 
       let pagedata = Math.ceil(Cardata.length/10)
+      
   console.log("type", Cardata);
    return res.status(200).send({ pagedata: pagedata , Cardata: Cardata});
 
