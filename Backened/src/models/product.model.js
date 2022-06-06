@@ -1,13 +1,11 @@
 const mongoose = require("mongoose");
 
 const proSchema = new mongoose.Schema({
-    
   id: { type: Number, required: false },
-  img:  { type: String, required: true },
-  type: { type: String, required: true },
- color:{ type: String, required: true },
- year: { type: Number, required: true }
-
+  image: { type: String, required: false },
+  price: { type: Number, required: false },
+  brand: { type: String, required: false },
+  color: { type: String, required: false },
 });
  
 const Product = new mongoose.model("fb", proSchema);
