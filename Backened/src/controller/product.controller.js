@@ -5,9 +5,10 @@ const router = express.Router();
 router.get("", async (req, res) => {
 
   try {
-const from = req.query.from || 0;
-const to = req.query.to;
-    const sort = req.query.sort;
+const {from} = req.query || 0;
+const {to} = req.query;
+
+    const {sort} = req.query;
     let price ;
     if(sort){
 if(sort === "price_asc"){
