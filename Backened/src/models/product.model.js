@@ -7,8 +7,9 @@ const proSchema = new mongoose.Schema({
   "type": { type: String, required: true },
   "color":{ type: String, required: true },
   "year": { type: Number, required: true }
+
 });
  
-const Product = mongoose.model("product", proSchema);
+const Product = new mongoose.model("fb", proSchema);
 
 module.exports = Product
