@@ -5,8 +5,6 @@ const Procontroller = require("./controller/product.controller")
 
 app.use(express.json());
 
-app.use("/carpro", Procontroller);
-
-
+app.use("/fb", Procontroller);
 
 module.exports=app;
