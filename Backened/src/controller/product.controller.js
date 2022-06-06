@@ -25,10 +25,18 @@ if(sort === "price_asc"){
       .lean()
       .exec();
 
-      let pagedata = Math.ceil(Cardata.length/10)
-      
+       const PAGE_SIZE = 10;
+  const page = (req.query.page || "0");
+  const total = await Product.countDocuments({});
+  const posts = await Product.find({})
+    .limit(PAGE_SIZE)
+    .skip(PAGE_SIZE * page);
+  res.json({
+    totalPages: Math.ceil(total / PAGE_SIZE),
+    posts,
+  });
   console.log("type", Cardata);
-   return res.status(200).send({ pagedata: pagedata , Cardata: Cardata});
+   return res.status(200).send({Cardata: Cardata});
 
   } catch (error) {
     console.log("error", error);
