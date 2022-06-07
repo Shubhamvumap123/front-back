@@ -17,6 +17,15 @@ if(sort === "price_asc"){
   price = -1;
 }
     }
+    const {q} =req.query;
+    const search =(data)=>{
+      return data.filter((item)=>{
+       
+        keys.some((key)=> item[key].toLowerCase().include(q))
+        
+      })
+    }
+    // q ? res.json(search(Product).slice(0, 10)) : res.json(Product.slice(0, 10));
 
     const Cardata = await Product.find({
       $and: [{ price: { $gte: from } }, { price: { $lte: to } }],
@@ -31,12 +40,9 @@ if(sort === "price_asc"){
   const posts = await Product.find({})
     .limit(PAGE_SIZE)
     .skip(PAGE_SIZE * page);
-  res.json({
-    totalPages: Math.ceil(total / PAGE_SIZE),
-    posts,
-  });
+
   console.log("type", Cardata);
-   return res.status(200).send({Cardata: Cardata});
+   return res.status(200).send({totalPages: Math.ceil(total / PAGE_SIZE),posts,Cardata: Cardata});
 
   } catch (error) {
     console.log("error", error);
