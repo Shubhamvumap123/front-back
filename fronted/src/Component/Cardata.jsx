@@ -1,5 +1,4 @@
-import React, {useState,useEffect} from "react"
-import axios from 'axios'
+import React, {useState,useEffect} from "react";
 
 const Cdata = () => {
 const [data,setdata] = useState([]);
@@ -10,8 +9,8 @@ const [query,setQuery] = useState([]);
 console.log("startdata");
 useEffect(() =>{
     
-      if (query.length === 0 || query.length > 2)
-        fetch(`http://localhost:5000/fb?page=${page} ?q=${query}`)
+      
+        fetch(`http://localhost:5000/fb?page=${page}&q=${query}`)
           .then((res) => res.json())
           .then(({ totalPages, posts }) => {
             setdata(posts);
